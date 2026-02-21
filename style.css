@@ -1,0 +1,153 @@
+:root {
+  --bg: #050709;
+  --panel: rgba(15, 19, 16, 0.9);
+  --text: #c8d0c7;
+  --muted: #6f7a71;
+  --accent: #6ab36f;
+  --warn: #c48f4c;
+  --danger: #cb6262;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 20% 20%, #0e1912, var(--bg) 45%);
+  color: var(--text);
+}
+
+.frame {
+  position: relative;
+  width: 1024px;
+  height: 576px;
+  border: 1px solid #1f2a23;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.55);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+#overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.panel {
+  pointer-events: auto;
+  background: var(--panel);
+  border: 1px solid #2d3a32;
+  padding: 16px;
+  max-width: 420px;
+  line-height: 1.45;
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.menu {
+  width: 460px;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  letter-spacing: 0.3em;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 14px;
+  color: var(--accent);
+}
+
+p {
+  color: var(--muted);
+}
+
+ul {
+  margin: 8px 0 0 18px;
+  color: var(--text);
+}
+
+.actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+button {
+  pointer-events: auto;
+  padding: 9px 16px;
+  border: 1px solid #3b4b40;
+  background: #111813;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+  color: #d8f0da;
+}
+
+.stat-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  text-align: left;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.value {
+  font-size: 17px;
+}
+
+.warn { color: var(--warn); }
+.danger { color: var(--danger); }
+.good { color: var(--accent); }
+
+.badge {
+  display: inline-block;
+  border: 1px solid #36473c;
+  padding: 2px 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: 8px;
+}
