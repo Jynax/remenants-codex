@@ -2,6 +2,19 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const overlay = document.getElementById("overlay");
 
+overlay.addEventListener("pointerdown", (event) => {
+  const targetId = event.target?.id;
+  if (targetId === "start") {
+    state.screen = "base";
+    state.message = "House online. Ready to deploy.";
+  }
+  if (targetId === "deploy") startNewExpedition();
+  if (targetId === "back") {
+    state.screen = "base";
+    state.message = "Mission complete.";
+  }
+});
+
 const WORLD = { width: 1800, height: 1200 };
 const EXTRACT = { x: 1680, y: 1050, w: 90, h: 90 };
 
@@ -228,8 +241,12 @@ function drawWorld() {
   }
 }
 
+let lastOverlayHtml = "";
+
 function setOverlay(html) {
+  if (html === lastOverlayHtml) return;
   overlay.innerHTML = html;
+  lastOverlayHtml = html;
 }
 
 function renderUI() {
@@ -243,10 +260,6 @@ function renderUI() {
         </div>
       </div>
     `);
-    document.getElementById("start").onclick = () => {
-      state.screen = "base";
-      state.message = "House online. Ready to deploy.";
-    };
     return;
   }
 
@@ -274,7 +287,6 @@ function renderUI() {
         </div>
       </div>
     `);
-    document.getElementById("deploy").onclick = () => startNewExpedition();
     return;
   }
 
@@ -294,10 +306,6 @@ function renderUI() {
         </div>
       </div>
     `);
-    document.getElementById("back").onclick = () => {
-      state.screen = "base";
-      state.message = "Mission complete.";
-    };
     return;
   }
 
